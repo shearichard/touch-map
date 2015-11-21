@@ -46,6 +46,13 @@ export default Ember.Component.extend({
     },
     renderAll(x, y){
     },
+
+    clearCanvas(){
+        let ctx = this.get('ctx');
+        let canvas = ctx.canvas;
+
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+    },
     renderDot(x, y){
         let ctx = this.get('ctx');
         ctx.fillStyle = '#ffccbb';
@@ -54,5 +61,24 @@ export default Ember.Component.extend({
         ctx.arc(x, y, 5, 0, 2*Math.PI, true);
         ctx.stroke();
         ctx.fill();
-    }
+    },
+    renderAllDots(){
+        this.clearCanvas();
+
+        let touches = this.get('touches');
+
+        touches.forEach((touch) => {
+            let x = touch.get('x');
+            let y = touch.get('y');
+            this.renderDot(x,y);
+        });
+    },
+
+    touchesChanged: Ember.observer('touches.[]', function() {
+        Ember.run.once(() => {
+            console.log('touch changed', this.get('touches.length'));
+            this.renderAllDots();
+        })
+    })
+
 });
