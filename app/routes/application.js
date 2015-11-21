@@ -7,7 +7,9 @@ export default Ember.Route.extend({
     actions: {
         saveTouch(x, y){
             this.store.createRecord('touch', {x: x, y: y}).save();
+        },
+        deleteAll() {
+            this.get('controller').get('model').forEach((touch) => touch.destroyRecord());
         }
-    }
-        
+    },
 });
