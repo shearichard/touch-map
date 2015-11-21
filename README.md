@@ -51,3 +51,12 @@ Specify what it takes to deploy your app.
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
+----
+./app/adapters/application.js
+./app/components/touch-renderer.js
+./app/models/touch.js
+./app/routes/application.js
+./app/templates/application.hbs
+./app/templates/components/touch-renderer.hbs
+config/enviroment.js
+
